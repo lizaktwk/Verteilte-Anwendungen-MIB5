@@ -6,6 +6,7 @@ public class Main {
 		int n = 3;
 		Eieruhr.eieruhr(n, "Timer nach " + n + " s abgelaufen");
 		System.out.println("I should be executed immediately");
+		//Github Test
 	}
 
 }
