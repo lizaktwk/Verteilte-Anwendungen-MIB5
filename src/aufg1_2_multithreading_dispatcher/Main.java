@@ -15,10 +15,10 @@ public class Main {
 
 	public static int[] execute(F f, int n) {
 		
-//		int[] result = new int[n];
+
 		Result result = new Result(n);
 		
-		for (int x = 0; x < n; x++) {
+		for (int x = 0; x < n; x++) { // x = location im Array
 			Thread thread = new MyThread(f, x, result);
 			thread.start();
 		}

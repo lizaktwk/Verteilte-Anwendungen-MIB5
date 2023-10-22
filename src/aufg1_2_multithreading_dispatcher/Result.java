@@ -22,7 +22,6 @@ public class Result {
 		try {
 			wait();
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Hi");
 		}
 		return result;
