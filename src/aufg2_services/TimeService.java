@@ -20,34 +20,43 @@ public class TimeService {
 		try {
 			serverSocket = new ServerSocket(75);
 			
-			while(true) {
-				clientSocket = serverSocket.accept();
-				System.out.println("Connection accepted by " + clientSocket);
-				
-				writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
-				reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-				
-				writer.write("time service");
-				writer.newLine();
-				writer.flush();
-				
-				while (true) {
-					String s = reader.readLine();
-					if(s.equals("date")) {
-						writer.write(Clock.date());
+			try {
+				while(true) {
+					clientSocket = serverSocket.accept();
+					try {
+						System.out.println("Connection accepted by " + clientSocket);
+						
+						writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+						reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+						
+						writer.write("time service");
 						writer.newLine();
 						writer.flush();
-					}
-					else if (s.equals("time")) {
-						writer.write(Clock.time());
-						writer.newLine();
-						writer.flush();
-					}
-					else if (s.equals("end")) {
-						break;
-					}
+						
+						while (true) {
+							String s = reader.readLine();
+							if(s.equals("date")) {
+								writer.write(Clock.date());
+								writer.newLine();
+								writer.flush();
+							}
+							else if (s.equals("time")) {
+								writer.write(Clock.time());
+								writer.newLine();
+								writer.flush();
+							}
+							else if (s.equals("end")) {
+								break;
+							}
+							
+						}
+					} catch (Exception e) {
 					
+					}
 				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			
 		} catch (IOException e) {
