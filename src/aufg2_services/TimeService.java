@@ -19,7 +19,7 @@ public class TimeService {
 		
 		try {
 			serverSocket = new ServerSocket(75);
-			
+			System.out.println("Server is running...");
 			try {
 				while(true) {
 					clientSocket = serverSocket.accept();
